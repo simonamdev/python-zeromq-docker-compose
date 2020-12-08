@@ -8,12 +8,14 @@ services:
       - "5555:5555"
     networks:
       - pubsubnet
+    tty: true
   subscriber:
     build:
       context: .
       dockerfile: ./docker/sub.Dockerfile
     networks:
       - pubsubnet
+    tty: true
     depends_on:
       - publisher
 networks:
