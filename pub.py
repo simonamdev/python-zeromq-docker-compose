@@ -7,7 +7,8 @@ print('Starting Server...')
 context = zmq.Context()
 socket = context.socket(zmq.PUB)
 
-socket.bind("tcp://*:5555")
+# socket.bind("tcp://*:5555") # both these options work
+socket.bind("tcp://0.0.0.0:5555")
 
 print('Starting Server Loop now!')
 while True:
