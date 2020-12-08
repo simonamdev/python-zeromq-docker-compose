@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  publisher:
+    build:
+      context: .
+      dockerfile: ./docker/pub.Dockerfile
+    ports:
+      - "5555:5555"
+    networks:
+      - pubsubnet
+  subscriber:
+    build:
+      context: .
+      dockerfile: ./docker/sub.Dockerfile
+    networks:
+      - pubsubnet
+    depends_on:
+      - publisher
+networks:
+  pubsubnet:
+    name: pubsubnet
